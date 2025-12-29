@@ -2,7 +2,6 @@ import torch
 import torch.nn as nn
 import pandas as pd
 from pathlib import Path
-
 from src.models.model import FraudDetectionModel
 
 base_dir = Path(__file__).resolve().parents[2]
@@ -14,7 +13,7 @@ model_dir.mkdir(parents=True, exist_ok=True)
 train_df = pd.read_csv(processed_dir / "train.csv")
 test_df = pd.read_csv(processed_dir / "test.csv")
 
-#Split features and labels
+#Splitting features and labels
 x_train = train_df.drop(columns=["Class"]).values
 y_train = train_df["Class"].values
 
@@ -37,7 +36,7 @@ model = FraudDetectionModel(input_dim)
 criterion = nn.BCEWithLogitsLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
-# Training
+# epoch training loop
 epochs = 10
 
 for epoch in range(epochs):
