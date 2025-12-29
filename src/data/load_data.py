@@ -12,6 +12,3 @@ if data_path.exists():
 
 df = pd.read_csv(data_path)
 
-print(df.shape)
-print(df.columns)
-print(df["Class"].value_counts())
